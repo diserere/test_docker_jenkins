@@ -80,7 +80,7 @@ pipeline {
         stage ("Test image outside") {
             steps {
                 script {
-                    sh "docker run  -it --rm ${DOCKER_IMAGE} '-h'"
+                    sh "docker run  -i --rm ${DOCKER_IMAGE} '-h'"
                 }
             }
         }

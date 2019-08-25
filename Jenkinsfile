@@ -30,9 +30,9 @@ pipeline {
     stages {
         stage ('Build image') {
             steps {
-                dockerTag = ${PROJECT_NAME}-${GIT_COMMIT}-${BUILD_ID}
 
                 script {
+                    dockerTag = ${PROJECT_NAME}-${GIT_COMMIT}-${BUILD_ID}
                     sshagent (credentials: [G_gitcred]) {
                         withEnv(['DOCKER_BUILDKIT=1']) {
                             staging_app_image = docker.build(

@@ -53,7 +53,7 @@ pipeline {
         stage ("Test image") {
             steps {
                 script {
-                    staging_app_image.withRun("-it", "-fake") { 
+                    staging_app_image.withRun("-it", "-h") { 
                     // staging_app_image.run("-it --rm", "-fake") { 
                     // staging_app_image.inside("-it --rm", "-fake") { 
                     // staging_app_image.inside { 

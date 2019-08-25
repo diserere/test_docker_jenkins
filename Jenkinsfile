@@ -53,7 +53,8 @@ pipeline {
         stage ("Test image") {
             steps {
                 script {
-                    staging_app_image.inside("-it --entrypoint ''", "/bin/bash") { 
+                    staging_app_image.inside { 
+                    // staging_app_image.inside("-it --entrypoint ''", "/bin/bash") { 
                     // staging_app_image.withRun("-it --entrypoint ''", "/bin/bash") { 
                     // staging_app_image.withRun("-it") { 
                     // staging_app_image.withRun("-it", "-h") { 

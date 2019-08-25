@@ -35,7 +35,8 @@ pipeline {
                     sshagent (credentials: [G_gitcred]) {
                         withEnv(['DOCKER_BUILDKIT=1']) {
                             staging_app_image = docker.build(
-                                "test_docker_target:${BUILD_ID}-${GIT_COMMIT}",
+                                // "test_docker_target:${BUILD_ID}-${GIT_COMMIT}",
+                                "test_docker_target",
                                 "--label 'git-commit=${GIT_COMMIT}' --ssh default --build-arg FEATURES='${BUILD_FEATURES}' ."
                                 // "--label 'git-commit=${GIT_COMMIT}' --ssh default --target builder-test --build-arg FEATURES='${BUILD_FEATURES}' ."
                             )
@@ -54,9 +55,9 @@ pipeline {
                 script {
                     staging_app_image.inside {
                         sh '''
-                            pwd
-                            ls -la
-                            echo "inside container"
+                            pwd;
+                            ls -la;
+                            echo "inside container";
                         '''
                     }
                 }

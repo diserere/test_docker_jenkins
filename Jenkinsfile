@@ -53,7 +53,8 @@ pipeline {
         stage ("Test image") {
             steps {
                 script {
-                    staging_app_image.withRun("-it", "-fake") { 
+                    // staging_app_image.withRun("-it", "-fake") { 
+                    staging_app_image.run("-it --rm", "-fake") { 
                         // sh 'pwd'
                         // sh 'ls -la'
                         // sh 'echo "inside container"'

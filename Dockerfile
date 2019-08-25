@@ -3,6 +3,7 @@ FROM ubuntu as builder
 USER root
 
 RUN apt -y update && apt -y install net-tools netcat
+RUN touch ./test_file
 
 #USER user
 WORKDIR /trash
@@ -10,7 +11,6 @@ WORKDIR /trash
 
 FROM builder as builder-test
 
-#RUN touch ./test_file
 RUN test -f ./test_file
 
 

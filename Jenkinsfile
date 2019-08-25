@@ -6,6 +6,8 @@ G_promoted_branch = 'origin/feature-dev'
 G_buildstatus = 'NotSet'
 G_teststatus = 'NotSet'
 
+DOCKER_IMAGE = "test_docker_target"
+
 // dockerTag = ${PROJECT_NAME}-${GIT_COMMIT}-${BUILD_ID}
 
 BUILD_FEATURES = "ci_run"
@@ -36,7 +38,7 @@ pipeline {
                         withEnv(['DOCKER_BUILDKIT=1']) {
                             staging_app_image = docker.build(
                                 // "test_docker_target:${BUILD_ID}-${GIT_COMMIT}",
-                                "test_docker_target",
+                                "${DOCKER_IMAGE}",
                                 "--label 'git-commit=${GIT_COMMIT}' --ssh default --build-arg FEATURES='${BUILD_FEATURES}' ."
                                 // "--label 'git-commit=${GIT_COMMIT}' --ssh default --target builder-test --build-arg FEATURES='${BUILD_FEATURES}' ."
                             )
@@ -71,6 +73,14 @@ pipeline {
                         sh 'which netstat'
                         // sh 'echo test passed'
                     }
+                }
+            }
+        }
+
+        stage ("Test image outside") {
+            steps {
+                script {
+                    sh "docker run  -it --rm ${DOCKER_IMAGE} '-h'"
                 }
             }
         }

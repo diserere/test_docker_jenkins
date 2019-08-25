@@ -12,7 +12,7 @@ BUILD_FEATURES = "ci_run"
 
 pipeline {
     agent {
-        any
+        node {label 'master'}
     }
     parameters {
         booleanParam (

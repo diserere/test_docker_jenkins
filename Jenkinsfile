@@ -62,7 +62,8 @@ pipeline {
                         // sh 'echo "inside container"'
                         // sh "echo 'BUILD_FEATURES: ${BUILD_FEATURES}'"
                         // sh 'netstat -V'
-                        sh 'test passed'
+                        sh 'which netstat'
+                        // sh 'echo test passed'
                     }
                 }
             }

@@ -22,5 +22,5 @@ EXPOSE 11223
 
 ENTRYPOINT [ "netcat" ]
 
-CMD [ "-l 11223" ]
+CMD [ "-l", "11223" ]
 

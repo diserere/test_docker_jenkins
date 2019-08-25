@@ -67,7 +67,7 @@ pipeline {
                         // sh 'echo "inside container"'
                         // sh "echo 'BUILD_FEATURES: ${BUILD_FEATURES}'"
                         // sh 'netstat -V'
-                        sh 'test -f ./test_file'
+                        sh 'cd trash && test -f ./test_file'
                         sh 'which netstat'
                         // sh 'echo test passed'
                     }

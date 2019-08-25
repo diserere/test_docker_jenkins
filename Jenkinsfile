@@ -53,12 +53,10 @@ pipeline {
         stage ("Test image") {
             steps {
                 script {
-                    staging_app_image.inside {
-                        sh '''
-                            pwd;
-                            ls -la;
-                            echo "inside container";
-                        '''
+                    staging_app_image.inside("-h") {
+                        sh 'pwd'
+                        sh 'ls -la'
+                        sh 'echo "inside container"'
                     }
                 }
             }

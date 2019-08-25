@@ -53,11 +53,11 @@ pipeline {
         stage ("Test image") {
             steps {
                 script {
-                    staging_app_image.run("-it", "-h") { 
+                    staging_app_image.withRun("-it", "-h") { 
                         // sh 'pwd'
                         // sh 'ls -la'
                         // sh 'echo "inside container"'
-                        sh 
+                        sh "echo ${BUILD_FEATURES}"
                     }
                 }
             }

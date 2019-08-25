@@ -32,7 +32,8 @@ pipeline {
                         withEnv(['DOCKER_BUILDKIT=1']) {
                             staging_app_image = docker.build(
                                 "test_docker_target:${dockerTag}",
-                                "--label 'git-commit=${GIT_COMMIT}' --ssh default --target builder-test --build-arg FEATURES='${BUILD_FEATURES}' ."
+                                "--label 'git-commit=${GIT_COMMIT}' --ssh default --build-arg FEATURES='${BUILD_FEATURES}' ."
+                                // "--label 'git-commit=${GIT_COMMIT}' --ssh default --target builder-test --build-arg FEATURES='${BUILD_FEATURES}' ."
                             )
                         }
                     }

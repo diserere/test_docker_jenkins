@@ -56,11 +56,13 @@ pipeline {
                     staging_app_image.withRun("-it", "-fake") { 
                     // staging_app_image.run("-it --rm", "-fake") { 
                     // staging_app_image.inside("-it --rm", "-fake") { 
+                    // staging_app_image.inside { 
                         // sh 'pwd'
                         // sh 'ls -la'
                         // sh 'echo "inside container"'
-                        sh "echo 'BUILD_FEATURES: ${BUILD_FEATURES}'"
-                        sh 'netstat -V'
+                        // sh "echo 'BUILD_FEATURES: ${BUILD_FEATURES}'"
+                        // sh 'netstat -V'
+                        sh 'test passed'
                     }
                 }
             }

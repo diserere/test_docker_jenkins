@@ -11,6 +11,9 @@ dockerTag = "${PROJECT_NAME}-${GIT_COMMIT}-${BUILD_ID}"
 BUILD_FEATURES = "ci_run"
 
 pipeline {
+    agent {
+        
+    }
     parameters {
         booleanParam (
             defaultValue: false,
